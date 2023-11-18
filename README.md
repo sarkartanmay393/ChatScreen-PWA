@@ -1,59 +1,80 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+<img src="public/logo192.png" alt="CoRider Logo" width="100" />
 
-## Available Scripts
+# CoRider Chats
 
-In the project directory, you can run:
+CoRider Chats is a Progressive Web Application (PWA) developed using ReactJS, designed to provide a chat experience for both Android and iOS devices. This project utilizes Chakra UI for a clean and responsive user interface.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Chat Screen:** View and interact with chat messages in a user-friendly interface.
+- **Pagination:** Load older messages when scrolling above a certain threshold.
+- **API Integration:** Retrieve chat data from the provided API endpoint.
 
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+## Getting Started
 
-### `npm test`
+To run the CoRider Chats application locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+1. Clone this repository:
 
-### `npm run build`
+```bash
+git clone https://github.com/your-username/CoRider-Chats.git
+cd CoRider-Chats
+```
 
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
+```bash
+npm install
+```
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+3. Start the development server:
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The application will be accessible at `http://localhost:3000` by default.
 
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
+You can deploy the CoRider Chats application on platforms like Netlify, Vercel, or any other of your choice. Ensure that the deployed application is installable as a PWA.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
+## Technologies Used
 
-## Learn More
+- ReactJS
+- Chakra UI
+- TypeScript
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API Endpoint
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The chat data is retrieved from the following API endpoint:
+
+```bash
+https://qa.corider.in/assignment/chat?page=0
+```
+
+## Folder Structure
+
+```plaintext
+src/
+|-- components/
+|   |-- ChatScreen.tsx
+|   |-- Message.tsx
+|   |-- Messages.tsx
+|-- App.tsx
+|-- index.tsx
+|-- ...
+```
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues and pull requests.
+
+---
+
+**Happy Coding!**
+
+```
+
+Make sure to replace the placeholder paths, URLs, and usernames with the actual values for your project. Additionally, you may want to include details about the project structure, deployment instructions, and any other relevant information specific to your application.
+```
