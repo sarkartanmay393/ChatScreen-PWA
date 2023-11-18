@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { AbsoluteCenter, Box, Divider, Text } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { ChatMessage, ChatApiResponse } from "../interfaces";
 import { SentMessage, ResponseMessage } from "./Message";
@@ -17,7 +17,15 @@ export const Messages = () => {
       try {
         const response = await fetch(`https://qa.corider.in/assignment/chat?page=${page}`);
         const data = await response.json() as ChatApiResponse;
-        setChatData((prevChatData) => [...prevChatData, ...data.chats]);
+
+        const modifiedData: ChatMessage[] = data.chats.map((chat) => {
+          return {
+            ...chat,
+            time: new Date(chat.time),
+          }
+        });
+
+        setChatData((prevChatData) => [...modifiedData, ...prevChatData]);
       } catch (error) {
         console.error('Error fetching chat data:', error);
       } finally {
@@ -56,6 +64,7 @@ export const Messages = () => {
 
   }, [page, chatData]);
 
+
   return (
     <Box
       ref={chatContainerRef}
@@ -65,14 +74,46 @@ export const Messages = () => {
       overflowY='scroll'
       alignItems='flex-end'
       margin='auto'
+      paddingY='12px'
     >
-      {chatData.map((data) => {
+      {chatData.map((data, index, arr) => {
+        const dn = getDateTime(data.time);
+        const pdn = index && getDateTime(chatData[index - 1].time);
         return (
-          data.sender.self ?
-            <SentMessage key={data.id} profileImage={data.sender.image} message={data.message} />
-            : <ResponseMessage key={data.id} profileImage={data.sender.image} message={data.message} />
+          <>
+            {dn < pdn && <Box position='relative' width='100%' marginY='12px'>
+              <Divider />
+              <AbsoluteCenter bg='#FAF9F4' px={2} fontSize='12px' opacity='60%'>
+                {true && formatDate(data.time)}
+              </AbsoluteCenter>
+            </Box>}
+            {data.sender.self ?
+              <SentMessage key={data.id} profileImage={data.sender.image} message={data.message} />
+              : <ResponseMessage key={data.id} profileImage={data.sender.image} message={data.message} />}
+          </>
         )
       })}
     </Box>
   )
+}
+
+function getDateTime(date: Date): number {
+  return date.getTime();
+}
+
+function formatDate(date: Date): string {
+  const months = [
+    'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+    'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
+  ];
+
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  const formattedDate = `${day} ${month}, ${hours % 12}:${(minutes < 10 ? '0' : '') + minutes} ${ampm}`;
+
+  return formattedDate;
 }

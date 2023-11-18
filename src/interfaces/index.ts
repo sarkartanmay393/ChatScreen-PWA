@@ -10,15 +10,24 @@ export interface Sender {
   user_id: string;
 }
 
+interface UniversalInterface {
+  [key: string]: String | any;
+}
+
 export interface ChatMessage {
   id: string;
   message: string;
   sender: Sender;
-  time: string;
+  time: Date;
 }
 
 export interface ChatApiResponse {
-  chats: ChatMessage[];
+  chats: {
+    id: string;
+    message: string;
+    sender: Sender;
+    time: string;
+  }[];
   from: string;
   message: string;
   name: string;
