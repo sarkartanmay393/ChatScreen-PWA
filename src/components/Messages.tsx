@@ -76,17 +76,19 @@ export const Messages = () => {
       margin='auto'
       paddingY='12px'
     >
-      {chatData.map((data, index, arr) => {
+      {chatData.map((data, index) => {
         const dn = getDateTime(data.time);
         const pdn = index && getDateTime(chatData[index - 1].time);
         return (
           <>
-            {dn < pdn && <Box position='relative' width='100%' marginY='10px'>
-              <Divider />
-              <AbsoluteCenter bg='#FAF9F4' px={2} fontSize='14px' opacity='60%'>
-                {true && formatDate(data.time)}
-              </AbsoluteCenter>
-            </Box>}
+            {dn < pdn &&
+              <Box key={`${data.id}-${Math.random().toFixed(3)}`} position='relative' width='100%' marginY='10px'>
+                <Divider />
+                <AbsoluteCenter bg='#FAF9F4' px={2} fontSize='14px' opacity='60%'>
+                  {true && formatDate(data.time)}
+                </AbsoluteCenter>
+              </Box>
+            }
             {data.sender.self ?
               <SentMessage key={data.id} profileImage={data.sender.image} message={data.message} />
               : <ResponseMessage key={data.id} profileImage={data.sender.image} message={data.message} />}

@@ -1,6 +1,6 @@
 export interface MessageProps {
   profileImage: string;
-  message: String;
+  message: string;
 }
 
 export interface Sender {

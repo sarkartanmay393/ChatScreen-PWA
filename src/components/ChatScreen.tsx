@@ -8,8 +8,8 @@ import { MdPhotoCamera } from "react-icons/md";
 import { IoIosDocument } from "react-icons/io";
 import { GrAttachment } from "react-icons/gr";
 
-import SendIcon from "../send.svg";
-import HeaderLogo from '../header-logo.svg';
+import SendIcon from '../icons/send.svg';
+import HeaderLogo from '../icons/header-logo.svg';
 
 import { Messages } from "./Messages";
 
@@ -48,6 +48,7 @@ export const ChatScreen = () => {
 
         <Box display='flex' width='100%' flexDirection='column' padding='12px' paddingTop={0} justifyContent='flex-end' >
           <Messages />
+
           <Box aria-label="input-footer" display='flex' width='100%' paddingY='6px' justifyContent='center' alignItems='center'>
             <Box borderRadius='10px' padding='6px' width='100%' bgColor='white' height='48px' display='flex' alignItems='center' gap='6px'>
               <Input
