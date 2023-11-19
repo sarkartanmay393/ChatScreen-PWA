@@ -12,11 +12,14 @@ import HeaderLogo from '../icons/header-logo.svg';
 
 import { Messages } from "./Messages";
 import { AttachmentPopover } from "./AttachmentPopover";
+import { useState } from "react";
 
 
 export const ChatScreen = () => {
+  const [msgInput, setMsgInput] = useState('');
+
   return (
-    <Box width={{ sm: '320px' }} border={{ sm: '1px solid black' }} borderRadius={{ sm: '22px' }} overflow='hidden' bgColor='#FAF9F4'>
+    <Box width={{ base: '100vw', sm: '320px' }} border={{ sm: '1px solid black' }} borderRadius={{ sm: '22px' }} overflow='hidden' bgColor='#FAF9F4'>
       {/* <Box height='40px' backgroundColor='' /> */}
 
       <Box height='100%' width='100%' aria-label="chat-screen" display='grid' gridTemplateRows={{ base: '120px calc(100vh - 120px)', sm: '120px 70vh' }} alignContent='space-between'>
@@ -33,7 +36,6 @@ export const ChatScreen = () => {
           </Box>
           <Box display='flex' justifyContent='space-between' alignItems='center'>
             <Box display='flex' gap='16px'>
-              {/* <FaUserCircle size='44px' /> */}
               <Image width='48px' height='48px' src={HeaderLogo} alt="header logo" />
               <Box display='grid' fontSize='16px' gap={0} textAlign='start'>
                 <Text>From <chakra.span fontWeight={600}>IGI Airport, T3</chakra.span></Text>
@@ -57,11 +59,13 @@ export const ChatScreen = () => {
                   'font-size': '14px',
                   'opacity': '50%'
                 }}
+                value={msgInput}
+                onChange={(e) => setMsgInput(e.target.value)}
               />
-
               <AttachmentPopover />
-
-              <Image width='22px' marginLeft='6px' src={SendIcon} alt="" cursor='pointer' />
+              <Button size='20px' borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }} onClick={() => {}}>
+                <Image aria-label="send-button" width='22px' src={SendIcon} alt="" />
+              </Button>
             </Box>
           </Box >
         </Box >

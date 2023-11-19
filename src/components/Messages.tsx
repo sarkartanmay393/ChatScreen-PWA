@@ -2,6 +2,7 @@ import { AbsoluteCenter, Box, Divider, Text } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { ChatMessage, ChatApiResponse } from "../interfaces";
 import { SentMessage, ResponseMessage } from "./Message";
+import React from "react";
 
 // Scrollable Area (w/ State, HTTP requests, Hooks)
 export const Messages = () => {
@@ -80,9 +81,9 @@ export const Messages = () => {
         const dn = getDateTime(data.time);
         const pdn = index && getDateTime(chatData[index - 1].time);
         return (
-          <>
+          <React.Fragment key={`${data.id}_dd`}>
             {dn < pdn &&
-              <Box key={`${data.id}-${Math.random().toFixed(3)}`} position='relative' width='100%' marginY='10px'>
+              <Box position='relative' width='100%' marginY='10px'>
                 <Divider />
                 <AbsoluteCenter bg='#FAF9F4' px={2} fontSize='14px' opacity='60%'>
                   {true && formatDate(data.time)}
@@ -92,7 +93,7 @@ export const Messages = () => {
             {data.sender.self ?
               <SentMessage key={data.id} profileImage={data.sender.image} message={data.message} />
               : <ResponseMessage key={data.id} profileImage={data.sender.image} message={data.message} />}
-          </>
+          </React.Fragment>
         )
       })}
     </Box>
