@@ -81,9 +81,9 @@ export const Messages = () => {
         const pdn = index && getDateTime(chatData[index - 1].time);
         return (
           <>
-            {dn < pdn && <Box position='relative' width='100%' marginY='12px'>
+            {dn < pdn && <Box position='relative' width='100%' marginY='10px'>
               <Divider />
-              <AbsoluteCenter bg='#FAF9F4' px={2} fontSize='12px' opacity='60%'>
+              <AbsoluteCenter bg='#FAF9F4' px={2} fontSize='14px' opacity='60%'>
                 {true && formatDate(data.time)}
               </AbsoluteCenter>
             </Box>}

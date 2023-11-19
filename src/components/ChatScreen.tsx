@@ -1,16 +1,22 @@
-import { Box, Input, Text, chakra, Image } from "@chakra-ui/react";
+import { Box, Input, Text, chakra, Image, Button, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Portal } from "@chakra-ui/react";
 
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaRegEdit } from "react-icons/fa";
+import { IoMdArrowBack } from "react-icons/io";
+import { IoIosVideocam } from "react-icons/io";
+import { MdPhotoCamera } from "react-icons/md";
+import { IoIosDocument } from "react-icons/io";
 import { GrAttachment } from "react-icons/gr";
-import { IoMdArrowBack, IoMdSend } from "react-icons/io";
+
+import SendIcon from "../send.svg";
 import HeaderLogo from '../header-logo.svg';
 
 import { Messages } from "./Messages";
 
 
-export const ChatScreen = () => {
 
+
+export const ChatScreen = () => {
   return (
     <Box width={{ sm: '320px' }} border={{ sm: '1px solid black' }} borderRadius={{ sm: '22px' }} overflow='hidden' bgColor='#FAF9F4'>
       {/* <Box height='40px' backgroundColor='' /> */}
@@ -20,8 +26,10 @@ export const ChatScreen = () => {
         <Box aria-label="contact-header" display='grid' padding='12px' paddingBottom={0} borderBottom='1px solid' borderColor='rgba(229, 229, 224, 1)'>
           <Box display='flex' alignItems='center' justifyContent='space-between' fontSize='x-large'>
             <Box display='flex' gap='10px' alignItems='center'>
-              <IoMdArrowBack />
-              <Text fontWeight={600}>Trip 1</Text>
+              <Button size='18px' borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }} onClick={() => window.history.back()}>
+                <IoMdArrowBack aria-label="back-button" />
+              </Button>
+              <Text fontWeight={600} _selection={{ 'user-select': 'none' }}>Trip 1</Text>
             </Box>
             <FaRegEdit />
           </Box>
@@ -41,7 +49,7 @@ export const ChatScreen = () => {
         <Box display='flex' width='100%' flexDirection='column' padding='12px' paddingTop={0} justifyContent='flex-end' >
           <Messages />
           <Box aria-label="input-footer" display='flex' width='100%' paddingY='6px' justifyContent='center' alignItems='center'>
-            <Box borderRadius='10px' padding='6px' width='100%' bgColor='white' height='42px' display='flex' alignItems='center' gap='6px'>
+            <Box borderRadius='10px' padding='6px' width='100%' bgColor='white' height='48px' display='flex' alignItems='center' gap='6px'>
               <Input
                 border={0}
                 focusBorderColor="transparent"
@@ -51,16 +59,38 @@ export const ChatScreen = () => {
                   'opacity': '50%'
                 }}
               />
-              <GrAttachment />
-              <IoMdSend />
+              <Popover>
+                <PopoverTrigger>
+                  <Button size='18px' borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
+                    <GrAttachment />
+                  </Button>
+                </PopoverTrigger>
+                <Portal>
+                  <PopoverContent bg='transparent' alignItems='flex-end' boxShadow={0} border={0}>
+                    <PopoverArrow bg='#008000' />
+                    <PopoverBody width='fit-content' bg='#008000' borderRadius={999} marginRight={2}>
+                      <Button borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
+                        <MdPhotoCamera width='20px' color="white" />
+                      </Button>
+                      <Button borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
+                        <IoIosVideocam color="white" />
+                      </Button>
+                      <Button borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
+                        <IoIosDocument color="white" />
+                      </Button>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Portal>
+              </Popover>
+
+              <Image width='22px' marginLeft='6px' src={SendIcon} alt="" cursor='pointer' />
             </Box>
-          </Box>
+          </Box >
+        </Box >
 
-        </Box>
-
-      </Box>
+      </Box >
 
       {/* <Box height='48px' backgroundColor='' /> */}
-    </Box>
+    </Box >
   );
 }

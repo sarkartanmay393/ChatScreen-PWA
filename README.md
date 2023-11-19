@@ -45,14 +45,6 @@ You can deploy the CoRider Chats application on platforms like Netlify, Vercel, 
 - Chakra UI
 - TypeScript
 
-## API Endpoint
-
-The chat data is retrieved from the following API endpoint:
-
-```bash
-https://qa.corider.in/assignment/chat?page=0
-```
-
 ## Folder Structure
 
 ```plaintext

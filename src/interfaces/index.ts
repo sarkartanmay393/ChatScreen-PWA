@@ -10,10 +10,6 @@ export interface Sender {
   user_id: string;
 }
 
-interface UniversalInterface {
-  [key: string]: String | any;
-}
-
 export interface ChatMessage {
   id: string;
   message: string;
