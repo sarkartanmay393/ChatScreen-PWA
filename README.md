@@ -10,6 +10,12 @@ CoRider Chats is a Progressive Web Application (PWA) developed using ReactJS, de
 - **Pagination:** Load older messages when scrolling above a certain threshold.
 - **API Integration:** Retrieve chat data from the provided API endpoint.
 
+## Technologies Used
+
+- ReactJS
+- Chakra UI
+- TypeScript
+
 ## Getting Started
 
 To run the CoRider Chats application locally, follow these steps:
@@ -18,6 +24,7 @@ To run the CoRider Chats application locally, follow these steps:
 
 ```bash
 git clone https://github.com/your-username/CoRider-Chats.git
+
 cd CoRider-Chats
 ```
 
@@ -38,12 +45,6 @@ The application will be accessible at `http://localhost:3000` by default.
 ## Deployment
 
 You can deploy the CoRider Chats application on platforms like Netlify, Vercel, or any other of your choice. Ensure that the deployed application is installable as a PWA.
-
-## Technologies Used
-
-- ReactJS
-- Chakra UI
-- TypeScript
 
 ## Folder Structure
 

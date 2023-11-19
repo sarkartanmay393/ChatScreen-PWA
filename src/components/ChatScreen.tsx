@@ -1,19 +1,17 @@
-import { Box, Input, Text, chakra, Image, Button, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Portal } from "@chakra-ui/react";
+import {
+  Box,
+  Input, Text, chakra, Image, Button
+} from "@chakra-ui/react";
 
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaRegEdit } from "react-icons/fa";
 import { IoMdArrowBack } from "react-icons/io";
-import { IoIosVideocam } from "react-icons/io";
-import { MdPhotoCamera } from "react-icons/md";
-import { IoIosDocument } from "react-icons/io";
-import { GrAttachment } from "react-icons/gr";
 
 import SendIcon from '../icons/send.svg';
 import HeaderLogo from '../icons/header-logo.svg';
 
 import { Messages } from "./Messages";
-
-
+import { AttachmentPopover } from "./AttachmentPopover";
 
 
 export const ChatScreen = () => {
@@ -60,29 +58,8 @@ export const ChatScreen = () => {
                   'opacity': '50%'
                 }}
               />
-              <Popover>
-                <PopoverTrigger>
-                  <Button size='18px' borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
-                    <GrAttachment />
-                  </Button>
-                </PopoverTrigger>
-                <Portal>
-                  <PopoverContent bg='transparent' alignItems='flex-end' boxShadow={0} border={0}>
-                    <PopoverArrow bg='#008000' />
-                    <PopoverBody width='fit-content' bg='#008000' borderRadius={999} marginRight={2}>
-                      <Button borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
-                        <MdPhotoCamera width='20px' color="white" />
-                      </Button>
-                      <Button borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
-                        <IoIosVideocam color="white" />
-                      </Button>
-                      <Button borderRadius='100%' bg='transparent' _hover={{ bg: 'transparent' }}>
-                        <IoIosDocument color="white" />
-                      </Button>
-                    </PopoverBody>
-                  </PopoverContent>
-                </Portal>
-              </Popover>
+
+              <AttachmentPopover />
 
               <Image width='22px' marginLeft='6px' src={SendIcon} alt="" cursor='pointer' />
             </Box>
