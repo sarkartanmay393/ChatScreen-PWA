@@ -1,6 +1,6 @@
 import { Card, Box, Text, Image } from "@chakra-ui/react";
-import { MessageProps } from "../interfaces";
 
+import { MessageProps } from "../interfaces";
 import VerifiedIcon from '../icons/verified.svg';
 
 export const SentMessage = (props: MessageProps) => {

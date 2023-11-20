@@ -1,5 +1,6 @@
-import { AbsoluteCenter, Box, Divider, Text } from "@chakra-ui/react";
+import { AbsoluteCenter, Box, Divider, Button } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
+
 import { ChatMessage, ChatApiResponse } from "../interfaces";
 import { SentMessage, ResponseMessage } from "./Message";
 import React from "react";
@@ -41,7 +42,7 @@ export const Messages = () => {
     const container = chatContainerRef.current;
     if (!container) { return }
 
-    const isAtTop = container.scrollTop === 0;
+    const isAtTop = container.scrollTop <= 1;
     if (isAtTop && !isLoading) {
       setPage((prevPage) => prevPage + 1);
     }
@@ -81,7 +82,7 @@ export const Messages = () => {
         const dn = getDateTime(data.time);
         const pdn = index && getDateTime(chatData[index - 1].time);
         return (
-          <React.Fragment key={`${data.id}_dd`}>
+          <React.Fragment key={`${data.id}_${data.sender.user_id}`}>
             {dn < pdn &&
               <Box position='relative' width='100%' marginY='10px'>
                 <Divider />
@@ -96,6 +97,7 @@ export const Messages = () => {
           </React.Fragment>
         )
       })}
+      {/* <Button>Recent messages</Button> */}
     </Box>
   )
 }
